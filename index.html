@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="list-bar">
+        <p class="p-list-bar">✔ My Lists</p>
+        <input type="text" name="phantom-list" class="phantom-list" placeholder="Create New List" required>
+        <ul class="ul-lists">
+        </ul>
+        <button class="button-new-list">+ Add New List</button>
+    </div>
+
+    <!-- // -->
+
+    <div class='list-tasks'>
+        <div class="main-tasks">
+            <div class="greeting">
+                <div class="today">
+                    <p class="main-month"></p>
+                    <p class="main-date-today"></p>
+                </div>
+                <div class="greeting-box">
+                    <p class="main-greeting"></p>
+                    <p class="phrase-greeting">What's your plan for today?</p>
+                </div>
+            </div>
+            <div class="select-list">
+                <p class="p-select-list">Select List </p>
+                    <select value="Select List"></select>
+            </div>
+
+            <div class="task-creation">
+                <textarea  class="task-create" placeholder="Add task"></textarea>
+                <div class="buttons">
+                    <button type="submit" class="button-submit">+ Add New Task</button> 
+                </div>
+            </div>
+        </div>
+
+        <div class="tasks-created">
+            
+        </div>
+    </div>
+
+    <script src="listBar.js"></script>
+    <script src="dateMainTasks.js"></script>
+</body>
+</html>
