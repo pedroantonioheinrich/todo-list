@@ -5,8 +5,8 @@
 }
 
 body{
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    width: 98.8vw;
     display: flex;
 }
 
@@ -19,7 +19,7 @@ body{
     font-size: 18px;
 }
 .list-bar{
-    min-height: 100%;
+    min-height: 640px;
     width: 25%;
     background-color: rgb(68, 68, 68);
     padding: 30px;
@@ -70,6 +70,44 @@ li:hover{
     background-color: rgb(253, 244, 121);
     color: rgb(0, 0, 0);
 }
+
+.isClicked{
+    height: 50px;
+    width: 100%;
+    background-color: rgb(253, 244, 121);
+    margin-bottom: 6px;
+    list-style: none ;
+    border-radius: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+}
+.notClicked{
+    height: 50px;
+    width: 100%;
+    background-color: rgb(83, 83, 83);
+    margin-bottom: 6px;
+    list-style: none ;
+    border-radius: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    color: #fff;
+}
+
 .btn-remove-list{
     height: 30px;
     width: 30px;
@@ -113,7 +151,7 @@ li:hover{
 
 .list-tasks{
     min-height: 640px;
-    min-width: 75%;
+    width: 75%;
     background-color: rgb(27, 27, 27);
     padding: 60px 30px 35px 60px;
     overflow: auto;
@@ -192,7 +230,7 @@ li:hover{
 .select-list{
     height: 150px;
     width: 67%;
-    background-color: rgb(85, 85, 85);
+    background-color: rgb(80, 80, 80);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -287,12 +325,18 @@ textarea{
     color: #fff;
 }
 .p-task-created{
-    min-height: 150px;
-    width: 100%;
-    color: #fff;
+    min-height: 50px;
+    width: 67%;
+    color: #000000;
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+    line-height: 1.5;         
+    letter-spacing: 1px;           
+    background-color: #fff;
     font-size: 14px;
-    border: 1px solid grey;
-    border-radius: 15px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 7px;
     margin-top: 3px;
     margin-bottom: 3px;
     padding: 15px;
