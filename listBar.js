@@ -7,6 +7,7 @@ const taskCreation = document.querySelector('.task-creation')
 const newGreeting = document.querySelector('.main-greeting')
 const taskList = document.querySelector('.task-list')
 
+
 let isSelected = false
 
 //------------------------------------------------------------------------>>
@@ -85,6 +86,7 @@ buttonAddNewList.addEventListener('click', ()=>{
                 select.style.display = 'none'
                 selectList.style.display = 'block'
                 taskCreation.style.display = 'none'
+                taskList.style.display = 'none'
                 pSelectList.textContent = 'Create Your First List 🔨'
             }
             console.log('botao remove clicado')
@@ -100,17 +102,17 @@ buttonAddNewList.addEventListener('click', ()=>{
 
 //------------------------------------------------------------------------>>
 
-//Selecionando a lista na Opção de seleção de lista
-    select.addEventListener('change', (e) => {
-    const selectedValue = select.value
-    const selectedList = userListArray.find(element => element.title === selectedValue)
-    // Muda o display depois que a lista é selecionada
-    if (selectedList) {
-        isSelected = true
-        showDisplay()
-        newGreeting.textContent = `${selectedList.title}'s List.`
-    }
-})
+// //Selecionando a lista na Opção de seleção de lista
+//     select.addEventListener('change', (e) => {
+//     const selectedValue = select.value
+//     const selectedList = userListArray.find(element => element.title === selectedValue)
+//     // Muda o display depois que a lista é selecionada
+//     if (selectedList) {
+//         isSelected = true
+//         showDisplay()
+//         newGreeting.textContent = `${selectedList.title}'s List.`
+//     }
+// })
 
 //------------------------------------------------------------------------>>
 
