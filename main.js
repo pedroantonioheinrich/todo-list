@@ -105,7 +105,8 @@ buttonAddNewList.addEventListener('click', ()=>{
     // Muda o display depois que a lista é selecionada
     if (selectedList) {
         isSelected = true
-        showDisplay()
+        taskCreation.style.display = 'block'
+        selectList.style.display = 'none'
         newGreeting.textContent = `${selectedList.title}'s List.`
     }
 })
@@ -140,7 +141,8 @@ ulLists.addEventListener('click', (e)=>{
             clickedItem.classList.remove('notClicked')
             clickedItem.classList.add('isClicked')
             // Atualiza a interface com os dados da lista
-            showDisplay()
+            taskCreation.style.display = 'block'
+            selectList.style.display = 'none'
             newGreeting.textContent = `List: ${selectedList.title}`
         }
         
@@ -184,12 +186,6 @@ function newOption(txtContent){
     option.textContent = txtContent
     option.classList.add('option-element')
     return option
-}
-
-// Mostra e esconde display
-function showDisplay(){
-    taskCreation.style.display = 'block'
-    selectList.style.display = 'none'
 }
 
  // Gera numero aleatorio pra ID
