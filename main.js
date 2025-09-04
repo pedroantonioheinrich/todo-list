@@ -1,8 +1,5 @@
 const ulLists = document.querySelector('.ul-lists')
 const buttonAddNewList = document.querySelector('.button-new-list')
-const selectList = document.querySelector('.select-list')
-const pSelectList = document.querySelector('.p-select-list')
-const select = document.querySelector('select')
 const taskCreation = document.querySelector('.task-creation')
 const newGreeting = document.querySelector('.main-greeting')
 const taskList = document.querySelector('.task-list')
@@ -13,34 +10,7 @@ let isSelected = false
 let clickedId = ''
 
 //------------------------------------------------------------------------>>
-//TEST
-// let userDefault1 = {
-//     title: 'Lista de estudos',
-//     tasks: ['atividade do dia de hoje é estudar matematica', 'estudar fisica', 'estudar quimica'],
-//     id: 12345
-// }
-// let userDefault2 = {
-//     title: 'Lista de tarefas',
-//     tasks: ['Correr', 'Comer', 'Jogar video game'],
-//     id: 454545
-// }
-
-// let userListArray = [userDefault1, userDefault2]
-//------------------------------------------------------------------------>>
-
 let userListArray = []
-
-if(userListArray.length === 0){
-    select.style.display = 'none'
-    pSelectList.textContent = 'Create Your First List 🔨'
-}
-
-const defaultOption = document.createElement('option')
-defaultOption.textContent = 'Select a list bellow'
-defaultOption.value = ''
-defaultOption.disabled = true
-defaultOption.selected = true
-select.insertBefore(defaultOption, select.firstChild)
 
 //------------------------------------------------------------------------>>
 
@@ -69,53 +39,20 @@ buttonAddNewList.addEventListener('click', ()=>{
                 id: uniqueId
             }
         )
-
-        // Criação da Opção dentro de Select
-        const newOp = newOption(phantomInput.value)
-        select.appendChild(newOp)
         // Remove o próprio botão 
         removeBtn.addEventListener('click', ()=>{
             ulLists.removeChild(newLi)
             // Remover também  ultimo elemento do array
             userListArray = userListArray.filter(list => list.id !== newLi.id)
-            //remover opção em Option
-            select.removeChild(newOp)
-            if(select.options.length === 1){
-                select.style.display = 'none'
-                selectList.style.display = 'block'
-                taskCreation.style.display = 'none'
-                taskList.style.display = 'none'
-                pSelectList.textContent = 'Create Your First List 🔨'
-            }
-        
         })
-        select.style.display = 'block'
-        pSelectList.textContent = 'Select List'
     }
     // Limpando o campo 'Create New List' depois que a 'Li' for adicionada
     phantomInput.value = ''
 })
 
+    // Evento para clicar np botão da lista criada 
 //------------------------------------------------------------------------>>
-
-//Selecionando a lista na Opção de seleção de lista
-    select.addEventListener('change', (e) => {
-    const selectedValue = select.value
-    const selectedList = userListArray.find(element => element.title === selectedValue)
-    // Muda o display depois que a lista é selecionada
-    if (selectedList) {
-        isSelected = true
-        taskCreation.style.display = 'block'
-        selectList.style.display = 'none'
-        newGreeting.textContent = `${selectedList.title}'s List.`
-    }
-})
-
-//------------------------------------------------------------------------>>
-
-// Evento para clicar np botão da lista criada 
 ulLists.addEventListener('click', (e)=>{
-    
     const clickedItem = e.target.closest('li')
     if (clickedItem) {
         
@@ -142,12 +79,13 @@ ulLists.addEventListener('click', (e)=>{
             clickedItem.classList.add('isClicked')
             // Atualiza a interface com os dados da lista
             taskCreation.style.display = 'block'
-            selectList.style.display = 'none'
             newGreeting.textContent = `List: ${selectedList.title}`
         }
         
     }     
 })
+
+
 
 // CRIAR TASK
 //------------------------------------------------------------------------>>
@@ -167,6 +105,7 @@ createTask.addEventListener('click', ()=>{
 }) 
 //------------------------------------------------------------------------>>
 
+
 function elementLi(txtContent, svgSource, idUnico){ 
     const li = document.createElement('li')
     const button = document.createElement('button')
@@ -181,12 +120,6 @@ function elementLi(txtContent, svgSource, idUnico){
     return { li, button }
 }
 
-function newOption(txtContent){
-    const option = document.createElement('option')
-    option.textContent = txtContent
-    option.classList.add('option-element')
-    return option
-}
 
  // Gera numero aleatorio pra ID
 function idGenerate(){
