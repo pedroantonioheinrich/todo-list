@@ -2,6 +2,7 @@ const ulLists = document.querySelector('.ul-lists')
 const buttonAddNewList = document.querySelector('.button-new-list')
 const taskCreation = document.querySelector('.task-creation')
 const newGreeting = document.querySelector('.main-greeting')
+const newPhrase = document.querySelector('.phrase-greeting')
 const taskList = document.querySelector('.task-list')
 const createTask = document.querySelector('.button-submit')
 
@@ -13,6 +14,11 @@ let clickedId = ''
 let userListArray = []
 
 //------------------------------------------------------------------------>>
+
+if(userListArray.length === 0){
+    //mudar a tela quando nao houvfer nada no array
+
+}
 
 buttonAddNewList.addEventListener('click', ()=>{
     const uniqueId = idGenerate().toString()
@@ -42,6 +48,7 @@ buttonAddNewList.addEventListener('click', ()=>{
             ulLists.removeChild(newLi)
             // Remover também  ultimo elemento do array
             userListArray = userListArray.filter(list => list.id !== newLi.id)
+
         })
     }
     // Limpando o campo 'Create New List' depois que a 'Li' for adicionada
@@ -76,6 +83,7 @@ ulLists.addEventListener('click', (e)=>{
             // Atualiza a interface com os dados da lista
             taskCreation.style.display = 'block'
             newGreeting.textContent = `List: ${selectedList.title}`
+            newPhrase.textContent = `Create a new task.`
         }
     }     
 })
@@ -83,35 +91,53 @@ ulLists.addEventListener('click', (e)=>{
 //------------------------------------------------------------------------>>
 createTask.addEventListener('click', ()=>{
     const textareaValue = document.querySelector('textarea')
-    const taskInList = userListArray.find(task => task.id === clickedId)
-    taskInList.tasks.push(textareaValue.value)
-    // Limpa o conteúdo anterior
-    textareaValue.value = ''
-    taskList.innerHTML = ''
-    // Cria elementos para cada tarefa
-    taskInList.tasks.forEach(taskFor => {
-        // Cria elemento p e adiciona à tasks da lista selecionada
-        const p = document.createElement('p')
-        // Cria elemento button (remover elemento) e adiciona à p da lista selecionada
-        const buttonRemoveP = document.createElement('button')
 
-        p.classList.add('p-task-created')
-        p.id = idGenerate().toString()
-        p.textContent = taskFor
+    textareaValue.addEventListener('keydown', ()=>{
+        taskCreation.style.border = '1px solid rgba(62, 101, 255, 1)'
+    })
 
-        buttonRemoveP.classList.add('btn-remove-p')
-        buttonRemoveP.textContent = 'x'
+    if(textareaValue.value === ''){
+        taskCreation.style.border = '1px solid red'
+    }else{
+        taskCreation.style.border = '1px solid rgba(81, 255, 101, 1)'
+        setInterval(()=>{
+            taskCreation.style.border = '1px solid rgb(80, 80, 80)'
+        },2000)
+        
+        const taskInList = userListArray.find(task => task.id === clickedId)
+        taskInList.tasks.push(textareaValue.value)
+        // Limpa o conteúdo anterior
+        textareaValue.value = ''
+        taskList.innerHTML = ''
+        // Cria elementos para cada tarefa
+        taskInList.tasks.forEach(taskFor => {
+            // Cria elemento p e adiciona à tasks da lista selecionada
+            const p = document.createElement('p')
+            // Cria elemento button (remover elemento) e adiciona à p da lista selecionada
+            const buttonRemoveP = document.createElement('button')
 
-        p.appendChild(buttonRemoveP)
-        taskList.appendChild(p)
-        console.log(taskList)
-        buttonRemoveP.addEventListener('click', ()=>{
-            taskList.removeChild(p)
-            // Remover também  ultimo elemento do array
-            userListArray = userListArray.filter(list => list.tasks.id !== p.id)
+            p.classList.add('p-task-created')
+            p.id = idGenerate().toString()
+            p.textContent = taskFor
+
+            buttonRemoveP.classList.add('btn-remove-p')
+            buttonRemoveP.textContent = 'x'
+
+            p.appendChild(buttonRemoveP)
+            taskList.appendChild(p)
+            console.log(taskList)
+            buttonRemoveP.addEventListener('click', ()=>{
+                taskList.removeChild(p)
+                // Remover também  ultimo elemento do array
+                userListArray = userListArray.filter(list => list.tasks.id !== p.id)
+            })
+        
         })
-     
-    })                  
+        newPhrase.textContent = `Task created. 🎉🎉`
+        setInterval(()=>{
+            newPhrase.textContent = `Create a new task.`
+        },3000)
+    }                 
 }) 
 //------------------------------------------------------------------------>>
 
