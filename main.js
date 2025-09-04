@@ -6,9 +6,11 @@ const select = document.querySelector('select')
 const taskCreation = document.querySelector('.task-creation')
 const newGreeting = document.querySelector('.main-greeting')
 const taskList = document.querySelector('.task-list')
+const createTask = document.querySelector('.button-submit')
 
 
 let isSelected = false
+let clickedId = ''
 
 //------------------------------------------------------------------------>>
 //TEST
@@ -31,7 +33,6 @@ let userListArray = []
 if(userListArray.length === 0){
     select.style.display = 'none'
     pSelectList.textContent = 'Create Your First List 🔨'
-    console.log('Array vazio!')
 }
 
 const defaultOption = document.createElement('option')
@@ -59,7 +60,6 @@ buttonAddNewList.addEventListener('click', ()=>{
         // Criando elemento com a função elementLi(txtContent, imgSource)
         const { li: newLi, button: removeBtn }  = elementLi(phantomInput.value, imgSrc, uniqueId)
         ulLists.appendChild(newLi)
-        console.log('Li adicionado a ul: ' + ulLists)
 
         //Enviando o novo 'Li' para um array como objeto no fim do array
         userListArray.push(
@@ -69,12 +69,10 @@ buttonAddNewList.addEventListener('click', ()=>{
                 id: uniqueId
             }
         )
-        console.log('Elemento adicionado ao array: ' + userListArray)
 
         // Criação da Opção dentro de Select
         const newOp = newOption(phantomInput.value)
         select.appendChild(newOp)
-        console.log(userListArray)
         // Remove o próprio botão 
         removeBtn.addEventListener('click', ()=>{
             ulLists.removeChild(newLi)
@@ -89,9 +87,7 @@ buttonAddNewList.addEventListener('click', ()=>{
                 taskList.style.display = 'none'
                 pSelectList.textContent = 'Create Your First List 🔨'
             }
-            console.log('botao remove clicado')
-            console.log(userListArray)
-
+        
         })
         select.style.display = 'block'
         pSelectList.textContent = 'Select List'
@@ -102,26 +98,27 @@ buttonAddNewList.addEventListener('click', ()=>{
 
 //------------------------------------------------------------------------>>
 
-// //Selecionando a lista na Opção de seleção de lista
-//     select.addEventListener('change', (e) => {
-//     const selectedValue = select.value
-//     const selectedList = userListArray.find(element => element.title === selectedValue)
-//     // Muda o display depois que a lista é selecionada
-//     if (selectedList) {
-//         isSelected = true
-//         showDisplay()
-//         newGreeting.textContent = `${selectedList.title}'s List.`
-//     }
-// })
+//Selecionando a lista na Opção de seleção de lista
+    select.addEventListener('change', (e) => {
+    const selectedValue = select.value
+    const selectedList = userListArray.find(element => element.title === selectedValue)
+    // Muda o display depois que a lista é selecionada
+    if (selectedList) {
+        isSelected = true
+        showDisplay()
+        newGreeting.textContent = `${selectedList.title}'s List.`
+    }
+})
 
 //------------------------------------------------------------------------>>
 
 // Evento para clicar np botão da lista criada 
 ulLists.addEventListener('click', (e)=>{
-    const createTask = document.querySelector('.button-submit')
+    
     const clickedItem = e.target.closest('li')
     if (clickedItem) {
         
+        clickedId = clickedItem.id
         const selectedList = userListArray.find(list => list.id === clickedItem.id)
         // Remove a classe de todos os itens antes de aplicar no atual
         const allItems = ulLists.querySelectorAll('li')
@@ -132,31 +129,40 @@ ulLists.addEventListener('click', (e)=>{
         })
         if (selectedList) {
             isSelected = true
+            // Limpa a tela de tasks da lista selecionada ao trocar de lista
+            taskList.innerHTML = ''
+            //Mostrar elementos da task da lista selecionada
+            selectedList.tasks.forEach(task => {
+                const taskItem = `<p class="p-task-created">${task}</p>`
+                taskList.innerHTML += taskItem
+            })
             // Troca o background do botão selecionado
             clickedItem.classList.remove('notClicked')
             clickedItem.classList.add('isClicked')
             // Atualiza a interface com os dados da lista
             showDisplay()
-            newGreeting.textContent = `${selectedList.title}'s List.`
+            newGreeting.textContent = `List: ${selectedList.title}`
         }
-        createTask.addEventListener('click', ()=>{
-                const textareaValue = document.querySelector('textarea').value
-
-                selectedList.tasks.push(textareaValue)
-                // Limpa o conteúdo anterior
-                    textareaValue.innerHTML = ''
-                    taskList.innerHTML = ''
-                    // Cria elementos para cada tarefa
-                selectedList.tasks.forEach(taskFor => {
-                    const taskItem = `<p class="p-task-created">${taskFor}</p>`
-                    taskList.innerHTML += taskItem
-                })   
-                
-            }) 
+        
     }     
 })
 
-
+// CRIAR TASK
+//------------------------------------------------------------------------>>
+createTask.addEventListener('click', ()=>{
+    const textareaValue = document.querySelector('textarea')
+    const taskInList = userListArray.find(task => task.id === clickedId)
+    taskInList.tasks.push(textareaValue.value)
+    // Limpa o conteúdo anterior
+    textareaValue.value = ''
+    taskList.innerHTML = ''
+    // Cria elementos para cada tarefa
+    taskInList.tasks.forEach(taskFor => {
+        const taskItem = `<p class="p-task-created">${taskFor}</p>`
+        taskList.innerHTML += taskItem
+    })   
+                
+}) 
 //------------------------------------------------------------------------>>
 
 function elementLi(txtContent, svgSource, idUnico){ 
