@@ -25,10 +25,8 @@ buttonAddNewList.addEventListener('click', ()=>{
         phantomInput.style.border = '1px solid red'
         // Caso não esteja vazio, capturar o que foi escrito e adicionar como título de uma lista
     }else{
-        // Criando elemento na lista
-        const imgSrc = '/asset/trash-icon.svg'
         // Criando elemento com a função elementLi(txtContent, imgSource)
-        const { li: newLi, button: removeBtn }  = elementLi(phantomInput.value, imgSrc, uniqueId)
+        const { li: newLi, button: removeBtn }  = elementLi(phantomInput.value, uniqueId)
         ulLists.appendChild(newLi)
 
         //Enviando o novo 'Li' para um array como objeto no fim do array
@@ -49,13 +47,11 @@ buttonAddNewList.addEventListener('click', ()=>{
     // Limpando o campo 'Create New List' depois que a 'Li' for adicionada
     phantomInput.value = ''
 })
-
-    // Evento para clicar np botão da lista criada 
+// Evento para clicar np botão da lista criada 
 //------------------------------------------------------------------------>>
 ulLists.addEventListener('click', (e)=>{
     const clickedItem = e.target.closest('li')
     if (clickedItem) {
-        
         clickedId = clickedItem.id
         const selectedList = userListArray.find(list => list.id === clickedItem.id)
         // Remove a classe de todos os itens antes de aplicar no atual
@@ -81,12 +77,8 @@ ulLists.addEventListener('click', (e)=>{
             taskCreation.style.display = 'block'
             newGreeting.textContent = `List: ${selectedList.title}`
         }
-        
     }     
 })
-
-
-
 // CRIAR TASK
 //------------------------------------------------------------------------>>
 createTask.addEventListener('click', ()=>{
@@ -98,25 +90,41 @@ createTask.addEventListener('click', ()=>{
     taskList.innerHTML = ''
     // Cria elementos para cada tarefa
     taskInList.tasks.forEach(taskFor => {
-        const taskItem = `<p class="p-task-created">${taskFor}</p>`
-        taskList.innerHTML += taskItem
+        // Cria elemento p e adiciona à tasks da lista selecionada
+        const p = document.createElement('p')
+        const buttonRemoveP = document.createElement('button')
+
+        p.classList.add('p-task-created')
+        p.id = idGenerate().toString()
+        p.textContent = taskFor
+
+        buttonRemoveP.classList.add('btn-remove-p')
+        buttonRemoveP.textContent = 'x'
+
+        p.appendChild(buttonRemoveP)
+        taskList.appendChild(p)
+        console.log(taskList)
+        buttonRemoveP.addEventListener('click', ()=>{
+            taskList.removeChild(p)
+            // Remover também  ultimo elemento do array
+            userListArray = userListArray.filter(list => list.tasks.id !== p.id)
+        })
+        
+        
     })   
                 
 }) 
 //------------------------------------------------------------------------>>
 
-
-function elementLi(txtContent, svgSource, idUnico){ 
+// Criar elemento li  que vai dentro da ul 
+function elementLi(txtContent, idUnico){ 
     const li = document.createElement('li')
     const button = document.createElement('button')
-    const img = document.createElement('img')
     li.textContent = txtContent
     li.id = idUnico
     button.classList.add('btn-remove-list')
+    button.textContent = 'x'
     li.appendChild(button)
-    img.classList.add('img-trash')
-    img.src = svgSource
-    button.appendChild(img)
     return { li, button }
 }
 
