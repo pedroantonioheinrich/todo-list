@@ -92,6 +92,7 @@ createTask.addEventListener('click', ()=>{
     taskInList.tasks.forEach(taskFor => {
         // Cria elemento p e adiciona à tasks da lista selecionada
         const p = document.createElement('p')
+        // Cria elemento button (remover elemento) e adiciona à p da lista selecionada
         const buttonRemoveP = document.createElement('button')
 
         p.classList.add('p-task-created')
@@ -109,10 +110,8 @@ createTask.addEventListener('click', ()=>{
             // Remover também  ultimo elemento do array
             userListArray = userListArray.filter(list => list.tasks.id !== p.id)
         })
-        
-        
-    })   
-                
+     
+    })                  
 }) 
 //------------------------------------------------------------------------>>
 
@@ -127,8 +126,6 @@ function elementLi(txtContent, idUnico){
     li.appendChild(button)
     return { li, button }
 }
-
-
  // Gera numero aleatorio pra ID
 function idGenerate(){
     const randomNum = Math.floor(Math.random() * 9999999)
