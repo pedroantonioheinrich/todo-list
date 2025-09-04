@@ -87,16 +87,23 @@ ulLists.addEventListener('click', (e)=>{
         }
     }     
 })
+// TXT AREA
+//------------------------------------------------------------------------>>
+const textArea = document.querySelector('textarea') 
+
+
+textArea.addEventListener('keyup', ()=>{
+    const textAreaChars = document.querySelector('.textarea-length')
+    taskCreation.style.border = '1px solid rgba(62, 101, 255, 1)'
+    textAreaChars.textContent =  `Text length: ${textArea.value.length}`
+})
+
 // CRIAR TASK
 //------------------------------------------------------------------------>>
 createTask.addEventListener('click', ()=>{
-    const textareaValue = document.querySelector('textarea')
+    const textAreaValue = document.querySelector('textarea')    
 
-    textareaValue.addEventListener('keydown', ()=>{
-        taskCreation.style.border = '1px solid rgba(62, 101, 255, 1)'
-    })
-
-    if(textareaValue.value === ''){
+    if(textAreaValue.value === ''){
         taskCreation.style.border = '1px solid red'
     }else{
         taskCreation.style.border = '1px solid rgba(81, 255, 101, 1)'
@@ -105,9 +112,9 @@ createTask.addEventListener('click', ()=>{
         },2000)
         
         const taskInList = userListArray.find(task => task.id === clickedId)
-        taskInList.tasks.push(textareaValue.value)
+        taskInList.tasks.push(textAreaValue.value)
         // Limpa o conteúdo anterior
-        textareaValue.value = ''
+        textAreaValue.value = ''
         taskList.innerHTML = ''
         // Cria elementos para cada tarefa
         taskInList.tasks.forEach(taskFor => {
