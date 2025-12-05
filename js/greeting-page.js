@@ -2,6 +2,8 @@ const mainGreeting = document.querySelector('.main-greeting')
 const mainMonth = document.querySelector('.main-month')
 const todayDate = document.querySelector('.main-date-today')
 
+
+
 const dayTime = new Date().getHours()
 const dayNow = new Date().getDate()
 const monthNow = new Date().getMonth()

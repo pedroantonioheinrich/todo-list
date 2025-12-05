@@ -5,7 +5,6 @@
     background-color: rgb(250, 39, 39);
     padding: 60px 30px 35px 60px;
     overflow: auto;
-    display: flex;
     justify-content: flex-start;
     position: absolute;
     left: 317px;
