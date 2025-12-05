@@ -1,0 +1,139 @@
+.left-bar{
+    height: 100vh;
+    width: 25%;
+    background-color: rgb(68, 68, 68);
+    padding: 30px;
+    overflow: auto;
+}
+.p-left-bar{
+    height: 35px;
+    margin-bottom: 10px;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.ul-left-bar{
+    min-height:1%;
+    width: 100%;
+    border-radius: 7px;
+   
+}
+.phantom-list{
+    height: 50px;
+    width: 100%;
+    background-color: rgb(83, 83, 83);
+    margin-bottom: 6px;
+    border-radius: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 3px dashed rgb(150, 150, 150);
+    outline: none;
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    transition: 0.2s ease-in-out;
+}
+
+li{
+    height: 50px;
+    width: 100%;
+    background-color: rgb(83, 83, 83);
+    margin-bottom: 6px;
+    list-style: none ;
+    border-radius: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    color: #fff;
+}
+li:hover{
+    background-color: rgb(253, 244, 121);
+    color: rgb(0, 0, 0);
+}
+
+.isClicked{
+    height: 50px;
+    width: 100%;
+    background-color: rgb(253, 244, 121);
+    margin-bottom: 6px;
+    list-style: none ;
+    border-radius: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+}
+.notClicked{
+    height: 50px;
+    width: 100%;
+    background-color: rgb(83, 83, 83);
+    margin-bottom: 6px;
+    list-style: none ;
+    border-radius: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.btn-remove-list{
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    background-color: rgba(123, 123, 123, 0.627);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #00000072;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    transition: 0.1s ease;
+
+}
+.btn-remove-list:hover{
+    height: 27px;
+    width: 27px;
+}
+
+.button-left-bar-new-list{
+    height: 45px;
+    width: 100%;
+    background-color: rgb(104, 104, 104);
+    color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+}
+.button-new-list:hover{
+    background-color: rgb(43, 43, 43);
+}

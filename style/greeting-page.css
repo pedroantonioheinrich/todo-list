@@ -1,0 +1,68 @@
+
+.greeting-page{
+    height: 100vh;
+    width: 75%;
+    background-color: rgb(250, 39, 39);
+    padding: 60px 30px 35px 60px;
+    overflow: auto;
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    left: 317px;
+}
+
+.greeting{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.today{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.main-month{
+    color: #fff;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+.main-date-today{
+    color: #fff;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}
+
+.main-date-selected{
+    color: #fff;
+}
+
+.greeting-box{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 30px;
+    margin-left: 30px;
+    
+}
+
+.main-greeting{
+    color: #fff;
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+.phrase-greeting{
+    color: #5e5e5e;
+    height: 50px;
+    font-size: 38px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}

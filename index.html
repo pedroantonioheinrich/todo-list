@@ -1,49 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo List</title>
-    <link rel="stylesheet" href="style.css">
-    
+    <link rel="stylesheet" href="/style/global-style.css">
+    <link rel="stylesheet" href="/style/create-list-left-bar.css">
+    <link rel="stylesheet" href="/style/greeting-page.css">
+    <link rel="stylesheet" href="/style/task-page.css">  
 </head>
 <body>
-    <div class="list-bar">
-        <p class="p-list-bar">✔ My Lists</p>
-        <input type="text" name="phantom-list" class="phantom-list" placeholder="Create New List" required>
-        <!-- <ul class="ul-lists"><li id{1234}>Lista de tarefas<button class="btn-remove-list"><img src="/asset/trash-icon.svg" alt="" class="img-trash"></button></li></ul> -->
-        <ul ul class="ul-lists"></ul>
-        <button class="button-new-list">+ Add New List</button>
+    <!-- /LEFT BAR CREATE LIST/ -->
+    <div class="left-bar">
+        <p class="p-left-bar">✔ Minhas Listas</p>
+        <input type="text" name="phantom-list" class="phantom-list" placeholder="Criar Nova Lista" required>
+        <button class="button-left-bar-new-list" id="button-left-bar-new-list">+ Adicionar Nova Lista</button>
+        <ul ul class="ul-left-bar"></ul>
     </div>
 
-    <!-- // -->
-
-    <div class='list-tasks'>
-        <div class="main-tasks">
+    <div class="main-page">
+        <!-- /GREETING PAGE/ -->
+        <div class='greeting-page' id="greeting-page">
             <div class="greeting">
                 <div class="today">
                     <p class="main-month"></p>
-                    <p class="main-date-today"></p>
+                       <p class="main-date-today"></p>
                 </div>
                 <div class="greeting-box">
                     <p class="main-greeting"></p>
                     <p class="phrase-greeting">What's your plan for today?</p>
                 </div>
-            </div>
-
-            <div class="task-creation">
-                <textarea  class="task-create" placeholder="Write a new task here..."></textarea>
-                <div class="buttons">
-                    <button type="submit" class="button-submit">+ Add New Task</button> 
-                    <p class="textarea-length">Text length: 0</p>
+        </div>
+        <!-- /CREATE TASK PAGE/ -->
+        <div class='list-tasks'>
+            <div class="main-tasks">
+                <div class="task-creation">
+                    <textarea  class="task-create" placeholder="Write a new task here..."></textarea>
+                    <div class="buttons">
+                        <button type="submit" class="button-submit">+ Add New Task</button> 
+                        <p class="textarea-length">Text length: 0</p>
+                    </div>
                 </div>
             </div>
+    
+            <div class="task-list"></div>
         </div>
-
-        <div class="task-list"></div>
     </div>
+    
+    
 
-    <script src="main.js"></script>
-    <script src="date.js"></script>
+    <!-- /SCRIPTS/ -->
+    <script src="/js/main.js"></script>
+    <script src="/js/dateGreeting.js"></script>
+    <script src="/js/create-list-left-bar.js"></script>
 </body>
 </html>
