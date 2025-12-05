@@ -14,13 +14,7 @@
     font-size: 18px;
 }
 
-.ul-left-bar{
-    min-height:1%;
-    width: 100%;
-    border-radius: 7px;
-   
-}
-.phantom-list{
+.input-create-list{
     height: 50px;
     width: 100%;
     background-color: rgb(83, 83, 83);
@@ -36,7 +30,14 @@
     transition: 0.2s ease-in-out;
 }
 
-li{
+.ul-left-bar{
+    min-height:1%;
+    width: 100%;
+    border-radius: 7px;
+   
+}
+
+.li-left-bar{
     height: 50px;
     width: 100%;
     background-color: rgb(83, 83, 83);
@@ -54,12 +55,12 @@ li{
     cursor: pointer;
     color: #fff;
 }
-li:hover{
+.li-left-bar:hover{
     background-color: rgb(253, 244, 121);
     color: rgb(0, 0, 0);
 }
 
-.isClicked{
+/* .isClicked{
     height: 50px;
     width: 100%;
     background-color: rgb(253, 244, 121);
@@ -115,7 +116,7 @@ li:hover{
 .btn-remove-list:hover{
     height: 27px;
     width: 27px;
-}
+} */
 
 .button-left-bar-new-list{
     height: 45px;
@@ -133,6 +134,7 @@ li:hover{
     justify-content: flex-start;
     align-items: center;
     padding: 10px;
+    margin-bottom: 5px;
 }
 .button-new-list:hover{
     background-color: rgb(43, 43, 43);
