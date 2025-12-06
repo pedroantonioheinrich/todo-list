@@ -18,7 +18,7 @@ btnCreateNewList.addEventListener('click', ()=>{
 
     // Confere se o input está vazio
     if (inputCreateList.value === ''){
-        inputCreateList.style.border = '3px dashed red'
+        inputCreateList.style.border = '3px dashed rgba(255, 68, 68, 1)'
         alert('Empty Input!!')
         setTimeout(()=>{
             inputCreateList.style.border = '3px dashed rgba(134, 134, 134, 1)'
@@ -33,8 +33,14 @@ btnCreateNewList.addEventListener('click', ()=>{
             id: generateUserId(),
             title: inputCreateList.value,
             text: '',
+<<<<<<< HEAD
             date: new Date().toLocaleDateString(),
             taskDone: false
+=======
+            date: '',
+            taskDone: false,
+            isDeletedFromList: false
+>>>>>>> 7461cbbd61aa0ad667208ca139d69b8f294b8a72
         }
 
         Users.addUser(newListCreated)
@@ -53,6 +59,9 @@ btnCreateNewList.addEventListener('click', ()=>{
 
 
         removeBtn.addEventListener('click', ()=>{
+            // Revisar isso!!
+            Users.user[Users.user.length - 1].isDeletedFromList = true
+            console.log(Users.user)
             ul.removeChild(li)
             // TODO -  CRIAR FUNÇÃO PRA DELETAR ELEMENTO DO ARRAY USER NA DB
             // Talvez fazer a remoção a partir de outro ponto no codigo, como no daily task, na tela principal
@@ -65,6 +74,3 @@ btnCreateNewList.addEventListener('click', ()=>{
     inputCreateList.value = ''
 
 })
-
-
-
