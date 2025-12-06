@@ -40,7 +40,6 @@
 .li-left-bar{
     height: 50px;
     width: 100%;
-    background-color: rgb(83, 83, 83);
     margin-bottom: 6px;
     list-style: none ;
     border-radius: 7px;
@@ -53,11 +52,12 @@
     padding-left: 10px;
     padding-right: 10px;
     cursor: pointer;
-    color: #fff;
+    background-color: rgb(253, 244, 121);
+        color: rgb(0, 0, 0);
 }
 .li-left-bar:hover{
-    background-color: rgb(253, 244, 121);
-    color: rgb(0, 0, 0);
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
 /* .isClicked{
@@ -96,6 +96,7 @@
     cursor: pointer;
     color: #fff;
 }
+*/
 
 .btn-remove-list{
     height: 25px;
@@ -114,9 +115,8 @@
 
 }
 .btn-remove-list:hover{
-    height: 27px;
-    width: 27px;
-} */
+background-color: rgba(246, 246, 246, 0.885);
+} 
 
 .button-left-bar-new-list{
     height: 45px;
@@ -136,6 +136,6 @@
     padding: 10px;
     margin-bottom: 5px;
 }
-.button-new-list:hover{
+.button-left-bar-new-list:hover{
     background-color: rgb(43, 43, 43);
 }

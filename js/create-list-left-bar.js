@@ -14,7 +14,7 @@ btnCreateNewList.addEventListener('click', ()=>{
 
     const inputCreateList = document.querySelector('.input-create-list')
 
-    // Confere se o input está vazio, e garanto que estará vazio após o alert (redundante.. eu sei!)
+    // Confere se o input está vazio
     if (inputCreateList.value === ''){
         inputCreateList.style.border = '3px dashed red'
         alert('Empty Input!!')
@@ -36,22 +36,33 @@ btnCreateNewList.addEventListener('click', ()=>{
         }
 
         Users.addUser(newListCreated)
-        inputCreateList.value = ''
+        
 
         const li = document.createElement('li')
         li.className = 'li-left-bar'
         li.textContent = Users.getTitle(Users.user.length - 1)
+
+        const removeBtn = document.createElement('button')
+        removeBtn.className = 'btn-remove-list'
+        removeBtn.textContent = 'x'
+
+        li.appendChild(removeBtn)
         ul.appendChild(li)
 
-        // VER O ARRAY USERS DO MODULO USERS
-        console.log(Users.user)
-        console.log('Filtered User: ')
-        console.log(Users.getTitle(Users.user.length - 1))
+
+        removeBtn.addEventListener('click', ()=>{
+            ul.removeChild(li)
+            // TODO -  CRIAR FUNÇÃO PRA DELETAR ELEMENTO DO ARRAY USER NA DB
+            // Talvez fazer a remoção a partir de outro ponto no codigo, como no daily task, na tela principal
+        })
+
+        inputCreateList.value = ''
 
     }
 
     inputCreateList.value = ''
 
 })
+
 
 

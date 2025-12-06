@@ -9,6 +9,14 @@ class Users{
         return this.user[index]
     }
 
+    static getIndex(userId) {
+        this.user.find((user, index) => {
+            if(user.id === userId){
+                return index
+            }
+        })
+    }
+
     static getTitle(userId){
         const userFound = this.user.find(user => user.id === userId)
         return userFound.title
@@ -44,8 +52,11 @@ class Users{
         return userFound.taskDone = taskBool
     }
     
+    static removeUserByTitle(userTitle) {
+        return this.user = this.user.filter(user => user.title != userTitle)
+    }
 
-    static removeUser(userId){
+    static removeUserById(userId){
        return this.user = this.user.filter(user => user.id != userId)
     }
 }
