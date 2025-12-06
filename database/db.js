@@ -1,4 +1,53 @@
+class Users{
+    static user = []
 
-let users = []
+    static addUser(userObj) {
+        return this.user.push(userObj)
+    }
 
-export default users
+    static getUser(index){
+        return this.user[index]
+    }
+
+    static getTitle(userId){
+        const userFound = this.user.find(user => user.id === userId)
+        return userFound.title
+    }
+
+    static getText(userId){
+        const userFound = this.user.find(user => user.id === userId)
+        return userFound.text
+    }
+
+    static getDate(userId){
+        const userFound = this.user.find(user => user.id === userId)
+        return userFound.date
+    }
+
+    static getTaskDone(userId) {
+        const userFound = this.user.find(user => user.id === userId)
+        return userFound.taskDone
+    }
+
+    static setTitle(userId, newTitle){
+        const userFound = this.user.find(user => user.id === userId)
+        return userFound.title = newTitle
+    }
+    
+    static setText(userId, newText) {
+        const userFound = this.user.find(user => user.id === userId)
+        return userFound.text = newText
+    }
+
+    static setTaskDone(userId, taskBool) {
+        const userFound = this.user.find(user => user.id === userId)
+        return userFound.taskDone = taskBool
+    }
+    
+
+    static removeUser(userId){
+       return this.user = this.user.filter(user => user.id != userId)
+    }
+}
+
+export default Users

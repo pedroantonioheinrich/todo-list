@@ -2,7 +2,7 @@
 .greeting-page{
     height: 100vh;
     width: 75%;
-    background-color: rgb(250, 39, 39);
+    background-color: rgb(19, 19, 19);
     padding: 60px 30px 35px 60px;
     overflow: auto;
     justify-content: flex-start;
