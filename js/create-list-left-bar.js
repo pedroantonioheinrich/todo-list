@@ -1,4 +1,6 @@
 import Users from "../database/db.js"
+import { createListElement } from "./functions.js"
+import { generateUserId } from "./functions.js"
 
 const btnCreateNewList = document.querySelector('.button-left-bar-new-list')
 const greetingPage = document.querySelector('.greeting-page')
@@ -28,17 +30,17 @@ btnCreateNewList.addEventListener('click', ()=>{
         }, 1000)
 
         let newListCreated = {
-            id: Users.user.length,
+            id: generateUserId(),
             title: inputCreateList.value,
             text: '',
-            date: '',
+            date: new Date().toLocaleDateString(),
             taskDone: false
         }
 
         Users.addUser(newListCreated)
         
 
-        const li = document.createElement('li')
+        const li = createListElement("li")
         li.className = 'li-left-bar'
         li.textContent = Users.getTitle(Users.user.length - 1)
 
