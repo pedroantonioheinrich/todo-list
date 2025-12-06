@@ -29,19 +29,14 @@ btnCreateNewList.addEventListener('click', ()=>{
             inputCreateList.style.border = '3px dashed rgba(134, 134, 134, 1)'
         }, 1000)
 
-        let newListCreated = {
-            id: generateUserId(),
-            title: inputCreateList.value,
-            text: '',
-<<<<<<< HEAD
-            date: new Date().toLocaleDateString(),
-            taskDone: false
-=======
-            date: '',
-            taskDone: false,
-            isDeletedFromList: false
->>>>>>> 7461cbbd61aa0ad667208ca139d69b8f294b8a72
-        }
+let newListCreated = {
+    id: generateUserId(),
+    title: inputCreateList.value,
+    text: '',
+    date: new Date().toLocaleDateString(),
+    taskDone: false,
+    isDeletedFromList: false
+}
 
         Users.addUser(newListCreated)
         
