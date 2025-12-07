@@ -1,13 +1,15 @@
 
 .greeting-page{
     height: 100vh;
-    width: 75%;
+    width: 73.5%;
     background-color: rgb(19, 19, 19);
     padding: 60px 30px 35px 60px;
     overflow: auto;
     justify-content: flex-start;
     position: absolute;
-    left: 317px;
+    left: 340px;
+    border-radius: 10px;
+    margin: 10px;
 }
 
 .greeting{

@@ -10,7 +10,7 @@ const ul = document.querySelector('.ul-left-bar')
 
 
 greetingPage.style.display = 'flex'
-taskPage.style.display = 'none'
+
 
 btnCreateNewList.addEventListener('click', ()=>{
 
@@ -19,7 +19,12 @@ btnCreateNewList.addEventListener('click', ()=>{
     // Confere se o input está vazio
     if (inputCreateList.value === ''){
         inputCreateList.style.border = '3px dashed rgba(255, 68, 68, 1)'
-        alert('Empty Input!!')
+         Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Você precisa digitar um nome para a lista!",
+            confirmButtonColor: 'rgba(41, 98, 255, 1)'
+        });
         setTimeout(()=>{
             inputCreateList.style.border = '3px dashed rgba(134, 134, 134, 1)'
         },2000)
@@ -29,23 +34,22 @@ btnCreateNewList.addEventListener('click', ()=>{
             inputCreateList.style.border = '3px dashed rgba(134, 134, 134, 1)'
         }, 1000)
 
-let newListCreated = {
-    id: generateUserId(),
-    title: inputCreateList.value,
-    text: '',
-    date: new Date().toLocaleDateString(),
-    taskDone: false,
-    isDeletedFromList: false
-}
+        let newListCreated = {
+            id: generateUserId(),
+            title: inputCreateList.value,
+            text: '',
+            date: new Date().toLocaleDateString(),
+            taskDone: false,
+            isDeletedFromList: false
+        }
 
         Users.addUser(newListCreated)
-        
-
+    
         const li = createListElement("li")
         li.className = 'li-left-bar'
-        li.textContent = Users.getTitle(Users.user.length - 1)
+        li.textContent = inputCreateList.value
 
-        const removeBtn = document.createElement('button')
+        const removeBtn = createListElement("button")
         removeBtn.className = 'btn-remove-list'
         removeBtn.textContent = 'x'
 
@@ -56,10 +60,14 @@ let newListCreated = {
         removeBtn.addEventListener('click', ()=>{
             // Revisar isso!!
             Users.user[Users.user.length - 1].isDeletedFromList = true
-            console.log(Users.user)
             ul.removeChild(li)
             // TODO -  CRIAR FUNÇÃO PRA DELETAR ELEMENTO DO ARRAY USER NA DB
-            // Talvez fazer a remoção a partir de outro ponto no codigo, como no daily task, na tela principal
+            Users.removeUserById(Users.user[Users.user.length - 1].id)
+        })
+
+        li.addEventListener('click', ()=>{
+            greetingPage.style.display = 'none'
+            taskPage.style.display = 'flex' 
         })
 
         inputCreateList.value = ''

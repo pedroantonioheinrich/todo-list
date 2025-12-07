@@ -8,6 +8,7 @@ body{
     min-height: 100vh;
     width: 98.8vw;
     display: flex;
+    background-color: black;
 }
 
 

@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="/style/global-style.css">
     <link rel="stylesheet" href="/style/create-list-left-bar.css">
     <link rel="stylesheet" href="/style/greeting-page.css">
-    <link rel="stylesheet" href="/style/task-page.css">  
+    <link rel="stylesheet" href="/style/task-page.css"> 
+    
 </head>
 
 <body>
@@ -38,18 +39,23 @@
         </div>
         <!-- /CREATE TASK PAGE/ -->
         <div class='task-page'>
+            <div class="button-adjust">
+                <button id="back-to-left-bar"> ← Voltar para Minhas Listas </button>
+            </div>
             <div class="main-tasks">
-                <div class="task-creation">
-                    <textarea  class="task-create" placeholder="Write a new task here..."></textarea>
-                    <div class="buttons">
-                        <button type="submit" class="button-submit">+ Add New Task</button> 
-                        <p class="textarea-length">Text length: 0</p>
+                <div class="task-creation-box">
+                    <textarea  class="textarea-task-create" placeholder="Escreva uma noa tarefa aqui..."></textarea>
+                    <div class="buttons-box">
+                        <button type="submit" class="button-submit">+ Adicionar Tarefa</button> 
+                        <p class="textarea-length">Tamanho do Texto: 0</p>
                     </div>
                 </div>
             </div>
+            <div class="tasks"></div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/database/db.js" type="module"></script>
     <script src="/js/greeting-page.js" type="module"></script>
     <script src="/js/task-page.js" type="module"></script>
