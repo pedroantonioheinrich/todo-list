@@ -44,31 +44,9 @@ btnCreateNewList.addEventListener('click', ()=>{
         }
 
         Users.addUser(newListCreated)
-    
-        const li = createListElement("li")
-        li.className = 'li-left-bar'
-        li.textContent = inputCreateList.value
-
-        const removeBtn = createListElement("button")
-        removeBtn.className = 'btn-remove-list'
-        removeBtn.textContent = 'x'
-
-        li.appendChild(removeBtn)
-        ul.appendChild(li)
-
-
-        removeBtn.addEventListener('click', ()=>{
-            // Revisar isso!!
-            Users.user[Users.user.length - 1].isDeletedFromList = true
-            ul.removeChild(li)
-            // TODO -  CRIAR FUNÇÃO PRA DELETAR ELEMENTO DO ARRAY USER NA DB
-            Users.removeUserById(Users.user[Users.user.length - 1].id)
-        })
-
-        li.addEventListener('click', ()=>{
-            greetingPage.style.display = 'none'
-            taskPage.style.display = 'flex' 
-        })
+        ul.innerHTML = "";
+        list()
+        
 
         inputCreateList.value = ''
 
@@ -76,4 +54,39 @@ btnCreateNewList.addEventListener('click', ()=>{
 
     inputCreateList.value = ''
 
+
 })
+
+
+// Mostra as listas criadas na UL left-bar
+const list = ()=>{Users.user.forEach((obj)=>{
+    const li = document.createElement('li')
+    li.className = 'li-left-bar'
+    li.textContent = obj.title
+
+    const removeBtn = document.createElement('button')
+    removeBtn.className = 'btn-remove-list'
+    removeBtn.textContent= 'x'
+
+    li.appendChild(removeBtn)
+    ul.appendChild(li)
+
+    console.log(Users.user)
+
+    removeBtn.addEventListener('click', ()=>{
+        Users.removeUserById(obj.id)
+        obj.isDeletedFromList = true
+        console.log(Users.user)
+        // greetingPage.style.display = 'flex'
+        // taskPage.style.display = 'none' 
+        ul.removeChild(li)
+
+    })
+
+    li.addEventListener('click', ()=>{
+        greetingPage.style.display = 'none'
+        taskPage.style.display = 'flex' 
+    })
+
+})}
+
