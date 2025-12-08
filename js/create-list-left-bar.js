@@ -44,6 +44,7 @@ btnCreateNewList.addEventListener('click', ()=>{
         }
 
         Users.addUser(newListCreated)
+        //Limpa e recria a lista no UL a cada nova lista criada
         ul.innerHTML = "";
         list()
         
